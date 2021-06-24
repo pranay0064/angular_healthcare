@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="card mt-5" style="align-items: center;">
+      <h1>Doctors Dashboard</h1>
+    </div>
+    <div class="card mt-5" style="padding: 20px;">
+      <form #registerForm="ngForm" (ngSubmit)="register(registerForm)">
+        
+        <div class="form-group">
+          <label for="dname">Doctor Name:</label>
+          <input type="text" #dname (ngModel)="dname" name="dname" id="dname" class="form-control"
+                              placeholder="Doctor Name">
+        </div>
+        <div class="form-group">
+          <label for="emailid">Doctor Email:</label>
+          <input type="text" #emailid (ngModel)="emailid" name="emailid" id="emailid" class="form-control"
+                              placeholder="Doctor email">
+        </div>
+        <div class="form-group">
+            <label for="password">Doctor Password:</label>
+            <input type="password" #password (ngModel)="password" name="password" id="password"
+                                class="form-control" placeholder="Doctor password">
+          </div>
+        <div class="form-group">
+          <label for="name">Doctor Availability:</label>
+          <input type="text" #availability (ngModel)="availability" name="availability" id="availability"
+                              class="form-control" placeholder="Doctor availability">
+        </div>
+        <div class="form-group">
+          <label for="name">Doctor Specialization:</label>
+          <input type="text" #specialization (ngModel)="specialization" name="specialization" id="specialization" class="form-control"
+                              placeholder="Doctor specialization">
+        </div>
+        <div class="form-group">
+          <label for="name">Doctor Slot:</label>
+          <input type="text" #slot (ngModel)="slot" name="slot" id="specialization" class="form-control"
+                              placeholder="Doctor slot">
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Register" class="btn btn-primary w-100">
+        </div>
+      </form>
+    </div>
+    <div class="mt-5">
+      <table class="table table-bordered">
+        <thead class="thead">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>EMail</th>
+            <th>Availability</th>
+            <th>Specialization</th>
+            <th>Slot</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody class="tbody">
+          <tr *ngFor="let doctor of doctorDetails">
+            <td>{{doctor.did}}</td>
+            <td>{{doctor.dname}}</td>
+            <td>{{doctor.emailid}}</td>
+            <td>{{doctor.availability}}</td>
+            <td>{{doctor.specialization}}</td>
+            <td>{{doctor.slot}}</td>
+            <td><button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                      data-bs-target="#exampleModal" (click)="edit(doctor)">
+                                      Edit
+                                  </button></td>
+            <td><button type="button" class="btn btn-danger"
+                                      (click)="deleteDoctor(doctor)">Delete</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>Update Form</h3>
+    <div class="card mt-5" style="padding: 20px;">
+      <form #updateForm="ngForm" (ngSubmit)="updateDoctorDetails(updateForm)">
+        <div class="form-group">
+          <label for="name">Doctor Id:</label>
+          <input type="text" disabled #did [(ngModel)]="doctorToUpdate.did" name="did" id="did"
+                              class="form-control" placeholder="Doctor Id">
+        </div>
+        <div class="form-group">
+          <label for="dname">Doctor Name:</label>
+          <input type="text" #dname [(ngModel)]="doctorToUpdate.dname" name="dname" id="dname"
+                              class="form-control" placeholder="Doctor Name">
+        </div>
+        <div class="form-group">
+          <label for="name">Doctor Email:</label>
+          <input type="text" #emailid [(ngModel)]="doctorToUpdate.emailid" name="emailid" id="emailid"
+                              class="form-control" placeholder="Doctor email">
+        </div>
+        <div class="form-group">
+            <label for="password">Doctor Password:</label>
+            <input type="password" #password [(ngModel)]="doctorToUpdate.password" name="password" id="password"
+                                class="form-control" placeholder="Doctor password">
+          </div>
+        <div class="form-group">
+          <label for="name">Doctor Availability:</label>
+          <input type="text" #availability [(ngModel)]="doctorToUpdate.availability" name="availability"
+                              id="availability" class="form-control" placeholder="Doctor Availability">
+        </div>
+        <div class="form-group">
+          <label for="name">Doctor Specialization:</label>
+          <input type="text" #specialization [(ngModel)]="doctorToUpdate.specialization" name="specialization"
+                              id="specialization" class="form-control" placeholder="Doctor Specialization">
+        </div>
+        <div class="form-group">
+          <label for="name">Doctor Slot:</label>
+          <input type="text" #slot [(ngModel)]="doctorToUpdate.slot" name="slot" id="slot"
+                              class="form-control" placeholder="Doctor Slot">
+        </div>
+        <div class="form-group">
+          <input type="submit" value="Update" class="btn btn-primary w-100">
+        </div>
+      </form>
+    </div>
+  </div>

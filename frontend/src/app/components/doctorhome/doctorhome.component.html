@@ -1,0 +1,52 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+      </div>
+      
+      <ul class="nav navbar-nav navbar-right">
+        <!--<a href="#x"> Profile</a>-->
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+<div class="container">
+    <div class="mt-5">
+        <p><u>Slot timings follows:</u><br><strong>A1:</strong> 09:30am-11:00am &nbsp; <strong>A2:</strong>
+            12:01pm-2:00pm &nbsp; 
+        </p>
+        <table class="table table-bordered">
+            <thead class="thead">
+                <tr>
+                    <th>Patient Id</th>
+                    <th>Name</th>
+                    <th>EMail</th>
+                    <th>Symptoms</th>
+                    <th>Age</th>
+                    <th>Accept</th>
+                    <th>Reject</th>
+                </tr>
+            </thead>
+            <tbody class="tbody">
+                <tr *ngFor="let patient of patientDetails">
+                    <td>{{patient.pid}}</td>
+                    <td>{{patient.pname}}</td>
+                    <td>{{patient.emailid}}</td>
+                    <td>{{patient.symptoms}}</td>
+                    <td>{{patient.age}}</td>
+                    <td><button (click)="Accept(patient)" style="background-color: lightgreen;">Accept</button></td>
+                    <td><button (click)="Reject(patient)" style="background-color: red;">Reject</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <div *ngIf="openForm">
+        <h4>Enter Prescription</h4>
+        <form #prescriptionForm="ngForm" (ngSubmit)="savePrescription(prescriptionForm)">
+            <input type="text" style="height: 90px; width:680px;" #prescription (ngModel)="prescription" name="prescription" id="prescription"
+                class="form-control" placeholder="Doctor's prescription">
+            <input type="submit" value="Submit" class="btn btn-primary w-100">    
+        </form>
+    </div>
+</div>

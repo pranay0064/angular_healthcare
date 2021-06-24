@@ -1,0 +1,49 @@
+<div class="container">
+    <h1 style="text-align: center;"> Patient Signup Form </h1>
+    <div class="card mt-5" style="padding: 20px;">
+        <form #registerUser="ngForm" (ngSubmit)="register(registerUser)">
+            <div class="group">
+                <div class="form-group">
+                    <label for="user" class="label">Patient Name:</label>
+                    <input type="text" #pname (ngModel)="pname" name="pname" id="pname" class="form-control"
+                        placeholder="Patient Name">
+                </div>
+            </div>
+            <div class="group">
+                <div class="form-group">
+                    <label for="user" class="label">Patient Email:</label>
+                    <input type="text" #emailid (ngModel)="emailid" name="emailid" id="emailid" class="form-control"
+                        placeholder="Patient email">
+                </div>
+            </div>
+            <div class="group">
+                <div class="form-group">
+                    <label for="user" class="label">Patient Password:</label>
+                    <input type="password" #password (ngModel)="password" name="password" id="password"
+                        class="form-control" placeholder="Patient Password">
+                </div>
+            </div>
+            <div class="group">
+                <div class="form-group">
+                    <label for="user" class="label">Patient Symptoms:</label>
+                    <input type="text" #symptoms (ngModel)="symptoms" name="symptoms" id="symptoms"
+                        class="form-control" placeholder="Patient symptoms">
+                </div>
+            </div>
+            <div class="group">
+                <div class="form-group">
+                    <label for="user" class="label">Patient Age:</label>
+                    <input type="text" #age (ngModel)="age" name="age" id="age"
+                        class="form-control" placeholder="Patient age">
+                </div>
+            </div>
+            <div class="group">
+                <div class="form-group">
+                    <input type="submit" value="Sign up" class="btn btn-primary w-100">
+                </div>
+            </div>
+        </form>
+        <div class="hr"></div>
+        <div class="foot"> <a href="/login"> Already member?</a> </div>
+    </div>
+</div>
